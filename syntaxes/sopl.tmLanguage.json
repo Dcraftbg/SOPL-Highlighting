@@ -1,0 +1,133 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "SOPL",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#registers"
+		},
+		{
+			"include": "#custom-ops"
+		},
+		{
+			"include": "#numerical"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#chars"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#data-types"
+		},
+		{
+			"include": "#functions"
+		},
+		{
+			"include": "#extern"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.sopl",
+				"match": "\\b(if|else|elif|while|return|macro|end|cif|celse)\\b"
+			}]
+		},
+		"functions": {
+			"patterns": [
+			  {
+				"name": "keyword.control.sopl",
+				"match": "\\bfunc\\s+"
+			  }
+			]
+		  },
+		"registers": {
+			"patterns": [{
+				"name": "keyword.other",
+				"match": "\\b(RAX|EAX|AX|AH|AL|RBX|EBX|BX|BH|BL|RCX|ECX|CX|CH|CL|RDX|EDX|DX|DH|DL|RSP|ESP|RBP|EBP|RDI|RSI|EDI|ESI)\\b"
+			}]
+		},
+		"extern": {
+			"patterns": [
+			  {
+				"name": "keyword.other.sopl",
+				"match": "\\bextern\\b"
+			  },
+			  {
+				"name": "string.quoted.double.sopl",
+				"match": "\\bextern\\s+\".*?\""
+			  },
+			  {
+				"name": "keyword.other.sopl",
+				"match": "\\bextern\\s+\\w+"
+			  }
+			]
+		  },
+		"custom-ops": {
+			"patterns": [{
+				"name": "keyword.other.sopl",
+				"match": "\\b(const|let|include|dll_import|dll_export|interrupt|cast)\\b"
+			}]
+		},
+		"data-types": {
+			"patterns": [{
+				"name": "keyword.other.sopl",
+				"match": "\\b(int|short|long|ptr|char|bool|size_t)\\b"
+			}]
+		},
+		"numerical": {
+			"patterns": [
+			  {
+				"name": "constant.numeric",
+				"match": "\\b(\\d+[l]?)\\b"
+			  },
+			  {
+				"name": "constant.numeric.hex",
+				"match": "\\b(0x[0-9a-fA-F]+[l]?)\\b"
+				}
+			]
+		  },
+		"strings": {
+			"name": "string.quoted.double.sopl",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.sopl",
+					"match": "\\\\."
+				}
+			]
+		},
+		"chars": {
+			"name": "constant.character",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name":"constant.character.escape.sopl"
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.sopl",
+					"match": "//.*$"
+				},
+				{
+					"name": "comment.block.sopl",
+					"begin": "/\\*",
+					"end": "\\*/"
+				}
+			]
+		}
+	},
+	"scopeName": "source"
+}

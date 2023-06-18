@@ -1,0 +1,29 @@
+{
+  "name": "spl",
+  "displayName": "SOPL",
+  "description": "Basic highlighting for SOPL lang",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "sopl",
+      "aliases": ["SOPL", "sopl"],
+      "extensions": [".spl"],
+      "configuration": "./language-configuration.json",
+      "icon": {
+        "dark": "rsc/cubyDark.png",
+        "light": "rsc/cubyLight.png"
+      }
+    }],
+    "grammars": [{
+      "language": "sopl",
+      "scopeName": "source",
+      "path": "./syntaxes/sopl.tmLanguage.json"
+    }]
+  }
+}
